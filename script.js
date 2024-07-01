@@ -98,7 +98,7 @@ const updateLogo = () => {
      // Hacer que la imagen se desvanezca
     setTimeout(() => {
         if (document.body.classList.contains('light-theme')) {
-            logo.src = 'img/logo-withe.gif';
+            logo.src = 'img/LOGO-withe.gif';
         } else {
             logo.src = 'img/LOGO.gif';
         }
