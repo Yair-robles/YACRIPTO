@@ -86,3 +86,30 @@ function renderChart(chartId, data) {
 
 fetchCryptoData();
 setInterval(fetchCryptoData, 60000); // Actualiza cada 60 segundos
+
+document.getElementById('theme-toggle').addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+    document.body.classList.toggle('dark-theme');
+    updateLogo();
+});
+
+const updateLogo = () => {
+    const logo = document.getElementById('logo');
+    if (document.body.classList.contains('light-theme')) {
+        logo.src = 'img/LOGO.gif';
+        logo.setAttribute('data-theme', 'light');
+    } else {
+        logo.src = 'img/LOGO-withe.gif';
+        logo.setAttribute('data-theme', 'dark');
+    }
+};
+
+// Set the initial theme based on the user's preference or default to dark theme
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+if (prefersDarkScheme) {
+    document.body.classList.add('dark-theme');
+} else {
+    document.body.classList.add('light-theme');
+}
+updateLogo();
+

@@ -1,29 +1,46 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
     margin: 0;
     padding: 20px;
-    background: black;
-    background-size: cover; /* Ajusta el tamaño de la imagen de fondo para cubrir toda la pantalla */
-    background-position: center; /* Centra la imagen de fondo */
+    transition: background-color 0.3s, color 0.3s;
 }
-header{
+
+body.light-theme {
+    background-color: #f5f5f5;
+    color: black;
+}
+
+body.dark-theme {
+    background-color: black;
+    color: white;
+}
+
+header {
     width: 100%;
     height: 20%;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
 }
-#logo{
-    margin: 0px auto;
-    width: 200px;
 
-   
+#logo {
+    width: 200px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#theme-toggle {
+    background: none;
+    border: 1px solid grey;
+    color: grey;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .container {
-    color: white;
     display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: flex-start; /* Alinea el contenido al inicio verticalmente */
+    justify-content: center;
+    align-items: flex-start;
     padding: 20px;
     flex-wrap: wrap;
 }
@@ -32,8 +49,8 @@ header{
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    width: 100%; /* Asegura que el grid ocupe todo el ancho disponible */
-    max-width: 1200px; /* Limita el ancho máximo del grid */
+    width: 100%;
+    max-width: 1200px;
 }
 
 .crypto {
