@@ -2,12 +2,12 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
-
+    transition: background-color 0.3s, color 0.3s;
 }
 
 body.light-theme {
     background-color: #f5f5f5;
-    color: black;
+    color: black !important;
 }
 
 body.dark-theme {
@@ -26,21 +26,103 @@ header {
 
 #logo {
     width: 200px;
-
+    transition: opacity 0.5s ease-in-out;
 }
 
-#theme-toggle {
-    background: none;
-    border: 1px solid grey;
-    color: grey;
-    padding: 10px;
-    cursor: pointer;
+.theme-switch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 9em;
+  height: 2.5em;
+  font-size: 20px;
+  font-family: Montserrat;
+  font-weight: 300;
+  color: black;
+  background-color: white;
+  padding: 0.5em;
+  border: 1px solid black;
+  box-shadow: 6px 6px 0px black;
+  transition: .4s;
+  z-index: 1;
+}
+
+.name::before {
+  color: black;
+  content: "Dark Mode";
+  margin-right: 2em;
+  transition: .2s ease-in-out;
+}
+
+.name::after {
+  color: black;
+  content: "Light Mode";
+  margin-right: 1.7em;
+  transition: .2s ease-in-out;
+  display: none;
+}
+
+.theme-switch .slider {
+  position: absolute;
+  background-color: #222;
+  margin-left: 6.2em;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 4px solid #222;
+  transform: rotate(-120deg);
+  box-shadow: inset 0px 6px #999, inset 0px 6px 1px 1px #999;
+  -moz-box-shadow: inset 0px 6px #999, inset 0px 6px 1px 1px #999;
+}
+
+.theme-switch:hover {
+  color: white;
+  cursor: pointer;
+  box-shadow: none;
+  transform: translateX(6px) translateY(6px);
+  background-color: black;
+  border: none;
+}
+
+.theme-switch:hover .name::before {
+  color: white;
+}
+
+.theme-switch:hover .name::after {
+  color: white;
+}
+
+.theme-switch input[type=checkbox]:checked + .slider {
+  transform: rotate(360deg);
+  box-shadow: none;
+  border: 4px solid #F28C38;
+  background-color: #F28C38;
+}
+
+.theme-switch input[type=checkbox]:checked ~ .name::before {
+  display: none;
+}
+
+.theme-switch input[type=checkbox]:checked ~ .name::after {
+  display: block;
+}
+
+.theme-switch input[type=checkbox] {
+  position: absolute;
+  visibility: hidden;
+}
+
+.slider {
+  transition: 300ms ease;
 }
 
 .container {
+
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: flex-start; /* Alinea el contenido al inicio verticalmente */
     padding: 20px;
     flex-wrap: wrap;
 }
@@ -49,8 +131,8 @@ header {
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    width: 100%;
-    max-width: 1200px;
+    width: 100%; /* Asegura que el grid ocupe todo el ancho disponible */
+    max-width: 1200px; /* Limita el ancho máximo del grid */
 }
 
 .crypto {

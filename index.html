@@ -7,14 +7,15 @@
     <title>YACRIPTO</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="dark-theme">
+<body class="ligth-theme">
     <header>
-        <div></div>
-        <header>
-            <img src="img/LOGO.gif" id="logo" data-theme="dark">
-            <button id="theme-toggle">Cambiar Tema</button>
-        </header>
-        
+        <img src="img/LOGO.gif" id="logo" data-theme="dark">
+        <label class="theme-switch" for="checkbox" id="themeswitch">
+            <input type="checkbox" id="checkbox">
+            <div class="slider round"></div>
+            <span class="name"></span>
+            <div class="back"></div>
+        </label>
     </header>
     <div class="container">
         <div id="crypto-container" class="crypto-grid"></div>

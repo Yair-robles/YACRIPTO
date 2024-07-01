@@ -87,29 +87,35 @@ function renderChart(chartId, data) {
 fetchCryptoData();
 setInterval(fetchCryptoData, 60000); // Actualiza cada 60 segundos
 
-document.getElementById('theme-toggle').addEventListener('click', () => {
-    document.body.classList.toggle('light-theme');
-    document.body.classList.toggle('dark-theme');
+document.getElementById('checkbox').addEventListener('change', (event) => {
+    document.body.classList.toggle('light-theme', event.target.checked);
+    document.body.classList.toggle('dark-theme', !event.target.checked);
     updateLogo();
 });
 
 const updateLogo = () => {
     const logo = document.getElementById('logo');
-    if (document.body.classList.contains('light-theme')) {
-        logo.src = 'img/LOGO.gif';
-        logo.setAttribute('data-theme', 'light');
-    } else {
-        logo.src = 'img/LOGO-withe.gif';
-        logo.setAttribute('data-theme', 'dark');
-    }
+     // Hacer que la imagen se desvanezca
+    setTimeout(() => {
+        if (document.body.classList.contains('light-theme')) {
+            logo.src = 'img/logo-withe.gif';
+        } else {
+            logo.src = 'img/LOGO.gif';
+        }
+        logo.style.opacity = 1; // Hacer que la imagen aparezca
+    }, 0); // El tiempo debe coincidir con la duración de la transición
 };
 
 // Set the initial theme based on the user's preference or default to dark theme
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+const checkbox = document.getElementById('checkbox');
+
 if (prefersDarkScheme) {
     document.body.classList.add('dark-theme');
+    checkbox.checked = false;
 } else {
     document.body.classList.add('light-theme');
+    checkbox.checked = true;
 }
 updateLogo();
 
